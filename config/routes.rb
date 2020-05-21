@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/:id/submitted_questions', to: 'users#submitted_questions'
 
   resources :questions, only: [:index, :show]
   resources :users, only: [:index, :show]

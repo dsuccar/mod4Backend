@@ -14,4 +14,9 @@ class UsersController < ApplicationController
     submitted_questions = user.submitted_questions.all
     render json: submitted_questions.to_json
   end
+
+  def create
+    user = User.create(username: params[:username])
+  end
+
 end

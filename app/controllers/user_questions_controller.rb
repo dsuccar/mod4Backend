@@ -8,4 +8,9 @@ class UserQuestionsController < ApplicationController
     user_question = UserQuestion.find(params[:id])
     render json: user_question.to_json
   end
+
+  def create
+    user_question = UserQuestion.create(user_id: params["user_id"], question_id: params["question_id"], choice: params["choice"])
+    render json: user_question.to_json
+  end
 end

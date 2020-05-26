@@ -19,4 +19,17 @@ class UsersController < ApplicationController
     user = User.create(username: params[:username])
   end
 
+
+  def unique_question
+    user = User.find(params[:id])
+    random_question = Question.all.sample
+    user_questions = UserQuestion.all
+    user_questions.map {|user_question| 
+      while user_question.user_id == user.id && user_question.question_id == random_question.id do
+        random_question = Question.all.sample
+      end
+    }
+    render json: random_question.to_json
+  end
+
 end

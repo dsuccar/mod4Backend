@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     user = User.create(username: params[:username])
   end
 
+  def login
+    user = User.find(params[:id])
+    render json: user.to_json(include: [:submitted_questions, :user_questions])
+  end
 
   def unique_question
     user = User.find(params[:id])
@@ -29,7 +33,7 @@ class UsersController < ApplicationController
         random_question = Question.all.sample
       end
     }
-    render json: random_question.to_json
+    render json: random_question.to_json(include: :user_questions)
   end
 
 end

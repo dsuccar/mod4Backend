@@ -2,12 +2,12 @@ class QuestionsController < ApplicationController
 
   def index
     questions = Question.all
-    render json: questions.to_json
+    render json: questions.to_json(include: :user_questions)
   end
 
   def show
     question = Question.find(params[:id])
-    render json: question.to_json
+    render json: question.to_json(include: :user_questions)
   end
   
   def create

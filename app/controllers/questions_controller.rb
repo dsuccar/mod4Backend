@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
 
   def show
     question = Question.find(params[:id])
-    render json: question.to_json(include: :user_questions)
+    render json: question.to_json(include: [:user_questions, :comments])
   end
   
   def create

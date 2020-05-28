@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def login
     user = User.find(params[:id])
-    render json: user.to_json(include: [:submitted_questions, :user_questions])
+    render json: user.to_json(include: [:submitted_questions, :user_questions, :questions, :comments])
   end
 
   def unique_question
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
         random_question = Question.all.sample
       end
     }
-    render json: random_question.to_json(include: :user_questions)
+    render json: random_question.to_json(include: [:user_questions, :comments])
   end
 
 end

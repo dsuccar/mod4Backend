@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :comments, only: [:index, :show, :create]
+  delete 'comments/:id', to: 'comments#destroy'
+
   get 'users/:id/submitted_questions', to: 'users#submitted_questions'
   get 'users/:id/unique_question', to: 'users#unique_question'
   get 'users/:id/login', to: 'users#login', as: "login"

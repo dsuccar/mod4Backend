@@ -10,6 +10,7 @@ require "faker"
 
 u1 = User.create(username:"Danny")
 u2 = User.create(username:"Bret")
+u3 = User.create(username:"hashbrowns")
 
 20.times do
     User.create(username: Faker::Twitter.screen_name)
@@ -105,5 +106,5 @@ end
     question= Question.all.sample()
     user = User.all.sample().id
     question_id = question.id
-    Comment.create(user_id: 1, question_id: question_id, comment_text: Faker::Hipster.sentence(word_count: 8, random_words_to_add: 4))
+    Comment.create(user_id: user, question_id: question_id, comment_text: Faker::Hipster.sentence(word_count: 8, random_words_to_add: 4))
 end
